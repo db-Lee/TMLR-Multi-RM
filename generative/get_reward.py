@@ -111,8 +111,8 @@ def main():
     # Determine categories to process
     if (
         "GPQA-diamond" in args.data_path
-        or "SuperGPQA" in args.data_path
-        or "TheoremQA" in args.data_path
+        or "MedQA" in args.data_path
+        or "LEXam" in args.data_path
     ):
         categories = ["test"]
     elif args.category == "all":

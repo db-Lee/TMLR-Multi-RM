@@ -17,6 +17,8 @@ def exact_match(pred, gold):
 
 def compute_reward_value(rewards, strategy):
     """Compute single reward value from list of rewards based on strategy"""
+    if len(rewards) == 0:
+        rewards = [0.5]
     rewards = [r if r is not None else np.nan for r in rewards]
     rewards = np.array(rewards)
     rewards[np.isnan(rewards)] = 0.5
@@ -357,7 +359,11 @@ def main():
 
     N_max_values = [1, 2, 4, 8, 16]
     
-    if "GPQA-diamond" in args.data_path:
+    if (
+        "GPQA-diamond" in args.data_path
+        or "MedQA" in args.data_path
+        or "LEXam" in args.data_path
+    ):
         categories = ["test"]
     else:
         categories = ['law', 'psychology', 'chemistry', 'biology', 'physics', 
